@@ -1,0 +1,208 @@
+$purple: #6a2876;
+$white: #ffffff;
+
+$gray500: #cbcbcb;
+$gray600: #535353;
+
+.map {
+  position: relative;
+  border: 1px solid $gray500;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 500px;
+  padding: 0 0 60px 0;
+  cursor: grab;
+  .hint {
+    width: 100%;
+    color: #535353;
+    font-size: 16px;
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    background: #ffffff;
+    position: relative;
+    span {
+      display: block;
+      padding-right: 100px;
+    }
+  }
+  .d3-map {
+    position: absolute;
+    left: 0px;
+    right: 0;
+    top: 10px;
+    bottom: 0;
+    height: 100%;
+  }
+  .map-controls {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    button {
+      margin: 0 2.5px;
+    }
+  }
+  .svg-map {
+    display: block;
+    width: 100%;
+    height: 100%;
+    // margin-top: -50px;
+    overflow: visible;
+    .district {
+      cursor: pointer;
+      transition: 0.1s ease;
+      fill: #f3e37c;
+      stroke: #ffffff;
+      stroke-width: 0.15px;
+      &:hover {
+        stroke: #ffffff;
+        fill: $purple !important;
+        stroke-width: 0.15px;
+      }
+    }
+  }
+  .d3-legend {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    bottom: 20px;
+    display: inline-flex;
+
+    ul.legend {
+      list-style: none;
+      margin: 0 0 7.5px 0;
+      padding: 0;
+      display: inline-flex;
+      li {
+        span {
+          display: block;
+          height: 20px;
+          margin-bottom: 5px;
+        }
+        div {
+          width: 70px;
+          height: 30px;
+          box-shadow: 0px 1px 3px #00000029;
+        }
+        margin: 0 15px 0 0;
+        text-align: center;
+        font-weight: bold;
+      }
+      li:last-child {
+        margin-right: 0;
+      }
+    }
+
+    ul.legend.na {
+      li {
+        margin-right: 15px;
+      }
+    }
+
+    .legend-gradient {
+      height: 45px;
+      box-shadow: 0px 1px 3px #00000029;
+    }
+  }
+}
+
+.tooltip {
+  background: $white;
+  box-shadow: 0px 19px 38px #00000029;
+  border: 1px solid $gray500;
+  color: #282828;
+  border-radius: 3px;
+  padding: 15px 25px 15px 15px;
+  position: absolute;
+  transition: all 0.15s ease-in-out;
+  &:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid $gray500;
+    left: -9px;
+    top: 10px;
+  }
+  &:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid $white;
+    left: -8px;
+    top: 8px;
+  }
+  &.hidden {
+    display: none;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: 360px;
+    li {
+      font-family: 'Lato', sans-serif;
+      display: flex;
+      align: center;
+      margin-bottom: 0;
+      span:first-child {
+        text-align: right;
+        width: 50px;
+        display: block;
+        min-width: 50px;
+      }
+      span:nth-child(2) {
+        text-align: left;
+        padding-left: 20px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .map {
+    .d3-map {
+      height: 350px;
+    }
+    .d3-legend {
+      padding: 0;
+      margin: 0 0 20px 0;
+      width: 100%;
+      display: flex;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      justify-content: center;
+      ul.legend.na,
+      ul.legend {
+        li {
+          margin-right: 10px;
+          span {
+            font-size: 12px;
+          }
+          div {
+            width: 50px;
+          }
+        }
+      }
+    }
+  }
+  .tooltip {
+    padding: 5px;
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        font-size: 10px;
+      }
+    }
+  }
+}
